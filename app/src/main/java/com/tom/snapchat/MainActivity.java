@@ -2,6 +2,8 @@ package com.tom.snapchat;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
@@ -25,11 +27,18 @@ public class MainActivity extends AppCompatActivity {
         big.bigPicture(
                 BitmapFactory.decodeResource(getResources(), R.drawable.pig256))
                 .setSummaryText("bla bla bla");
+        Intent intent = new Intent(this, ChatActivity.class);
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity( this,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
         Notification notification = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.pig32)
                 .setContentTitle("This is Title")
                 .setContentText("This is Text")
                 .setContentInfo("This is Info")
+                .setContentIntent(pendingIntent)
                 .setWhen(System.currentTimeMillis())
                 .build();
         NotificationManager manager =
