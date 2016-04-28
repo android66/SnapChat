@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -28,11 +29,18 @@ public class MainActivity extends AppCompatActivity {
                 BitmapFactory.decodeResource(getResources(), R.drawable.pig256))
                 .setSummaryText("bla bla bla");
         Intent intent = new Intent(this, ChatActivity.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(MainActivity.class);
+        stackBuilder.addNextIntent(intent);
+        PendingIntent pendingIntent = stackBuilder.getPendingIntent(
+                0, PendingIntent.FLAG_UPDATE_CURRENT);
+        /*
         PendingIntent pendingIntent =
                 PendingIntent.getActivity( this,
                 0,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
+                */
         Notification notification = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.pig32)
                 .setContentTitle("This is Title")
