@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         makeNotification();
+        startActivity(new Intent(this, ChatActivity.class));
     }
 
     public void hello(View v){
