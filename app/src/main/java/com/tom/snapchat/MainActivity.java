@@ -21,6 +21,13 @@ public class MainActivity extends AppCompatActivity {
         makeNotification();
     }
 
+    public void hello(View v){
+        Intent hello = new Intent(this, HelloIntentService.class);
+        hello.putExtra(HelloIntentService.PARAM_MSG, "TEST1");
+        startService(hello);
+        hello.putExtra(HelloIntentService.PARAM_MSG, "TEST2");
+        startService(hello);
+    }
     public void startMyService(View v){
         Intent intent = new Intent(this, MyService.class);
         startService(intent);

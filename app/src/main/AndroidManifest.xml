@@ -20,7 +20,9 @@
         <service
             android:name=".MyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <service android:name=".HelloIntentService" ></service>
     </application>
 
 </manifest>
