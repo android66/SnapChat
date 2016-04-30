@@ -10,6 +10,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +19,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         makeNotification();
+    }
+
+    public void startMyService(View v){
+        Intent intent = new Intent(this, MyService.class);
+        startService(intent);
+    }
+    public void stopMyService(View v){
+        Intent intent = new Intent(this, MyService.class);
+        stopService(intent);
     }
 
     private void makeNotification() {
